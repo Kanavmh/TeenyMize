@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal To-Do List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+        }
+
+        .todo-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .todo-item input[type="checkbox"] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Minimal To-Do List</h1>
+        <ul class="todo-list">
+            <li class="todo-item">
+                <input type="checkbox">
+                <span>Task 1</span>
+            </li>
+            <li class="todo-item">
+                <input type="checkbox">
+                <span>Task 2</span>
+            </li>
+            <li class="todo-item">
+                <input type="checkbox">
+                <span>Task 3</span>
+            </li>
+        </ul>
+    </div>
+    <div class="completed-tasks"></div>
+        <h2>Completed Tasks</h2>
+    </div>
+    <script>
+        document.querySelector('.completed-tasks').addEventListener('click', function(event) {
+        if (event.target.classList.contains('todo-item')) {
+            event.target.style.textDecoration = 'none';
+            event.target.style.fontStyle = 'normal';
+            event.target.style.opacity = '1';
+            event.target.parentNode.removeChild(event.target);
+            document.querySelector('.todo-list').appendChild(event.target);
+        }
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var todoItems = document.querySelectorAll('.todo-item');
+
+        todoItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                item.style.textDecoration = 'line-through';
+                item.style.fontStyle = 'italic';
+                item.style.opacity = '0.5';
+                item.parentNode.removeChild(item);
+                document.querySelector('.completed-tasks').appendChild(item);
+            });
+        });
+    });
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
