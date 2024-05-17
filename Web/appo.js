@@ -1,8 +1,13 @@
-  const bells = new Audio('./sounds/bell.wav'); 
+  const bells = new Audio('bell.wav'); 
   const startBtn = document.querySelector('.btn-start'); 
   const session = document.querySelector('.minutes'); 
   let myInterval; 
   let state = true;
+
+  const music = new Audio('music.mp3');
+  music.loop = true; 
+  const volumen = 0.2; 
+  music.volume = volumen;
 
   const appTimer = () => {
     const sessionAmount = Number.parseInt(session.textContent)
