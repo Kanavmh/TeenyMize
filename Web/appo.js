@@ -4,6 +4,7 @@
   let myInterval; 
   let state = true;
 
+  //Add music file here
   const music = new Audio('music.mp3');
   music.loop = true; 
   const volumen = 0.2; 
